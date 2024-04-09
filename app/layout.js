@@ -1,8 +1,3 @@
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { fas } from "@fortawesome/free-solid-svg-icons";
-
-library.add(fas);
-
 import Header from "../components/Header";
 
 export const metadata = {
