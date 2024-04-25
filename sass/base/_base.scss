@@ -1,3 +1,5 @@
+@use "../abstracts/vars";
+
 h1,
 h2,
 h3,
@@ -22,6 +24,6 @@ img {
   vertical-align: top;
 }
 body {
-  background-color: lightgray;
-  font-family: arial;
+  background-color: #eee;
+  font-family: vars.$font__primary;
 }
