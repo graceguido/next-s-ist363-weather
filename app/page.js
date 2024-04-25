@@ -1,17 +1,20 @@
 "use client";
+
 // core components
 import { useState, useEffect } from "react";
+
 // next js components
 import Image from "next/image";
+
 // custom components
+import Button from "../components/button";
 import Col from "../components/Col";
 import Container from "../components/Container";
 import List from "../components/List";
 import Row from "../components/Row";
+import Section from "../components/Section";
 import Tabs from "../components/Tabs";
 import Temp from "../components/Temp";
-import Button from "../components/button";
-import Section from "../components/Section";
 
 import { getGeoLocation, getPeople, getWeatherDataByLatLon } from "../lib/api";
 
@@ -45,19 +48,23 @@ const Homepage = () => {
   }, [location]);
 
   useEffect(() => {
+    // filter out the days of the week
     const tempWeek = [];
+
     weatherData &&
       weatherData.list.filter((block) => {
         const date = new Date(block.dt * 1000);
         const options = { weekday: "short" };
         const day = date.toLocaleDateString("en-US", options);
-        // console.log(day);
+        //console.log(day);
         if (!tempWeek.includes(day)) {
           tempWeek.push(day);
         }
       });
 
     setDaysOfWeek(tempWeek);
+
+    // then set state with the days of the week
   }, [weatherData]);
 
   return (
@@ -73,7 +80,7 @@ const Homepage = () => {
             <Col sm={3} md={4}>
               <h2>{weatherData.city.name}</h2>
               <Temp
-                size="xl"
+                size="lg"
                 amount={weatherData.list[0].main.temp}
                 unit={tempUnit}
               />
@@ -84,10 +91,10 @@ const Homepage = () => {
                 width={100}
                 height={100}
               />
-              <br></br>
+              <br />
               <Button
                 label={`Change to ${
-                  tempUnit === "imperial" ? "celsius" : "farenheit"
+                  tempUnit === "imperial" ? "celsius" : "fahrenheit"
                 }`}
                 clickHandler={() => {
                   setTempUnit(tempUnit === "imperial" ? "metric" : "imperial");
@@ -95,7 +102,6 @@ const Homepage = () => {
               />
             </Col>
             <Col sm={9} md={8}>
-              {" "}
               {weatherData && daysOfWeek && (
                 <section>
                   <Tabs
@@ -105,7 +111,7 @@ const Homepage = () => {
                   />
                   <List
                     activeIndex={activeDayIndex}
-                    items={weatherData?.list}
+                    items={weatherData.list}
                     daysOfWeek={daysOfWeek}
                     unit={tempUnit}
                   />

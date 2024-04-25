@@ -4,7 +4,7 @@ import "../sass/global.scss";
 
 export const metadata = {
   title: "IST 363 Weather App",
-  description: "A project for IST363 practicing React and API calls",
+  description: "A project for IST363 practicing React and API calls.",
 };
 
 export default function RootLayout({ children }) {

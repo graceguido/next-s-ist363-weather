@@ -1,6 +1,6 @@
-import Row from "./Row";
-import Image from "next/image";
 import Col from "./Col";
+import Image from "next/image";
+import Row from "./Row";
 import Temp from "./Temp";
 
 const List = ({ activeIndex, daysOfWeek, items, unit }) => {
@@ -28,7 +28,6 @@ const List = ({ activeIndex, daysOfWeek, items, unit }) => {
               <Col xs={6} sm={4}>
                 <Temp amount={block.main.temp} unit={unit} />
                 <p>{block.weather[0].description}</p>
-                {block.main.temp}
               </Col>
               <Col xs={3} sm={2}>
                 <Image
